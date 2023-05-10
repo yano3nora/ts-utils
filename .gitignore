@@ -6,6 +6,7 @@
 ### CUSTOM ###
 npm
 .envrc
+!.vscode/settings.json
 
 # Created by https://www.toptal.com/developers/gitignore/api/linux,macos,windows,visualstudiocode,sublimetext,node,python,ruby,firebase,unity,csharp
 # Edit at https://www.toptal.com/developers/gitignore?templates=linux,macos,windows,visualstudiocode,sublimetext,node,python,ruby,firebase,unity,csharp
@@ -398,6 +399,7 @@ GitHub.sublime-settings
 .vscode/*
 !.vscode/tasks.json
 !.vscode/launch.json
+!.vscode/settings.json
 *.code-workspace
 
 ### VisualStudioCode Patch ###

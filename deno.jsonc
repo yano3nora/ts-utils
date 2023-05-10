@@ -3,10 +3,18 @@
     "dev": "deno test --watch",
     "build": "deno run -A build.ts",
     "link": "(cd npm && npm link)",
-    "publish:dry": "(cd npm && npm publish --dry-run)",
-    "publish:run": "(cd npm && npm publish)"
+    "publish:dry": "deno run -A publish.ts dry",
+    "publish:run": "deno run -A publish.ts run"
+  },
+  "test": {
+    "exclude": ["npm/"]
+  },
+  "lint": {
+    "exclude": ["npm/"]
   },
   "fmt": {
-    "singleQuote": true
+    "exclude": ["npm/", "README.md"],
+    "singleQuote": true,
+    "semiColons": false
   }
 }

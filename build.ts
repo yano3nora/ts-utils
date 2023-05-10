@@ -1,4 +1,5 @@
 import { build, emptyDir } from 'https://deno.land/x/dnt@0.35.0/mod.ts'
+import templatePackageJson from './package.json' assert { type: 'json' }
 
 await emptyDir('./npm')
 await build({
@@ -6,14 +7,11 @@ await build({
   outDir: './npm',
   shims: { deno: true },
   package: {
-    name: '@yano3nora/ts-utils',
-    version: Deno.args[0].replace(/^v/, ''),
-    description: 'typescript utils.',
-    publishConfig: { access: 'public' },
-    repository: {
-      type: "git",
-      url: "git+https://github.com/yano3nora/ts-utils.git",
-    }
+    name: templatePackageJson.name,
+    version: templatePackageJson.version,
+    description: templatePackageJson.description,
+    publishConfig: templatePackageJson.publishConfig,
+    repository: templatePackageJson.repository,
   },
   postBuild() {
     // Deno.copyFileSync('LICENSE', 'npm/LICENSE') // TODO

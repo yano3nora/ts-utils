@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "version": "0.0.0",
+  "name": "@yano3nora/ts-utils",
+  "description": "typescript utils.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yano3nora/ts-utils.git"
+  }
+}
