@@ -1,6 +1,10 @@
 {
   "tasks": {
-    "dev": "deno test --watch main.ts",
-    "build": "deno run -A build.ts"
+    "dev": "deno test --watch",
+    "build": "deno run -A build.ts",
+    "link": "(cd npm && npm link)"
+  },
+  "fmt": {
+    "singleQuote": true
   }
 }

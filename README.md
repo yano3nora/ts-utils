@@ -6,9 +6,19 @@ ts-utils
 $ deno task dev
 ```
 
-# build & deploy
+# build & test
 ```sh
-$ deno task build
+# build
+$ deno task build v0.0.0
+
+# link on local
+$ deno task link
+$ cd ../another-project
+$ npm link package-name
+```
+
+# publish
+```sh
 $ cd npm
 $ npm publish
 ```
