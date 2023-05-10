@@ -19,6 +19,6 @@ $ npm link package-name
 
 # publish
 ```sh
-$ cd npm
-$ npm publish
+$ deno task publish:dry
+$ deno task publish:run
 ```

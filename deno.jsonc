@@ -2,7 +2,9 @@
   "tasks": {
     "dev": "deno test --watch",
     "build": "deno run -A build.ts",
-    "link": "(cd npm && npm link)"
+    "link": "(cd npm && npm link)",
+    "publish:dry": "(cd npm && npm publish --dry-run)",
+    "publish:run": "(cd npm && npm publish)"
   },
   "fmt": {
     "singleQuote": true
