@@ -1,7 +1,6 @@
 # ts-utils
 
 # Usage
-
 ```sh
 $ npm i @yano3nora/ts-utils
 ```
