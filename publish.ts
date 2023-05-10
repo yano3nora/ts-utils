@@ -14,18 +14,19 @@ const command = new Deno.Command(
       '-c',
       `
         npm version ${version} \
-          --git-tag-version=${flag === 'dry' ? 0 : 1} &&
-        deno task build &&
-        (cd npm && npm publish ${flag === 'dry' ? '--dry-run' : ''})
+          --git-tag-version=${flag === 'dry' ? 'false' : 'true'} && \
+        deno task build && \
+        (cd npm && npm publish ${flag === 'dry' ? '--dry-run' : ''}) \
+        ${flag === 'dry' ? '&& git checkout package.json' : ''}
       `,
     ],
   },
 )
 
-const { code, stdout, stderr } = await command.output()
+const { code, stdout, stderr } = command.outputSync()
 
 if (code === 0) {
-  console.info(new TextDecoder().decode(stdout))
+  console.log(new TextDecoder().decode(stdout))
 } else {
   console.error(new TextDecoder().decode(stderr))
 }
