@@ -1,5 +1,6 @@
 const FLAGS = ['dry', 'run'] as const
 const flag = Deno.args[0] as 'dry' | 'run'
+const isDryRun = flag !== 'run'
 const version = Deno.args[1] // npm version ${Deno.args[1]}
 
 if (!FLAGS.includes(flag)) {
@@ -14,10 +15,10 @@ const command = new Deno.Command(
       '-c',
       `
         npm version ${version} \
-          --git-tag-version=${flag === 'dry' ? 'false' : 'true'} && \
+          --git-tag-version=${isDryRun ? 'false' : 'true'} && \
         deno task build && \
-        (cd npm && npm publish ${flag === 'dry' ? '--dry-run' : ''}) \
-        ${flag === 'dry' ? '&& git checkout package.json' : ''}
+        (cd npm && npm publish ${isDryRun ? '--dry-run' : ''}) \
+        ${isDryRun ? '&& git checkout package.json' : ''}
       `,
     ],
   },
