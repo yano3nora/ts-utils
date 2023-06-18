@@ -1,6 +1,7 @@
 # ts-utils
 
 # Usage
+
 ```sh
 $ npm i @yano3nora/ts-utils
 ```
@@ -13,11 +14,13 @@ objectByKeys([1, 2, 3], (key) => Number(key) * 10)
 ```
 
 # dev
+
 ```sh
 $ deno task dev
 ```
 
 # build & test
+
 ```sh
 # build
 $ deno task build
@@ -29,7 +32,8 @@ $ npm link package-name
 ```
 
 # publish
+
 ```sh
-$ deno task publish:dry ${NPM_VERSION_SUB_COMMAND}
+$ deno task publish:dry ${NPM_VERSION_SUB_COMMAND} # major | minor | patch
 $ deno task publish:run ${NPM_VERSION_SUB_COMMAND}
 ```

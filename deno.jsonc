@@ -14,7 +14,9 @@
   },
   "fmt": {
     "exclude": ["npm/", "README.md"],
-    "singleQuote": true,
-    "semiColons": false
+    "options": {
+      "singleQuote": true,
+      "semiColons": false
+    }
   }
 }
