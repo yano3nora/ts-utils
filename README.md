@@ -33,6 +33,10 @@ $ npm link package-name
 
 ## publish
 ```sh
+# dry run
 $ deno task publish:dry ${NPM_VERSION_SUB_COMMAND} # major | minor | patch
+
+# run
 $ deno task publish:run ${NPM_VERSION_SUB_COMMAND}
+$ git push --tags
 ```
