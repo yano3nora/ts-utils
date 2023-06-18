@@ -1,6 +1,8 @@
-# ts-utils
+ts-utils
+===
 
 # Usage
+ref. [API References - deno.land/x](https://deno.land/x/yano3nora_tsutils)
 
 ```sh
 $ npm i @yano3nora/ts-utils
@@ -13,14 +15,12 @@ objectByKeys([1, 2, 3], (key) => Number(key) * 10)
 // => { '1': 10, '2': 20, '3': 30 }
 ```
 
-# dev
-
+# Development
 ```sh
 $ deno task dev
 ```
 
-# build & test
-
+## build & test
 ```sh
 # build
 $ deno task build
@@ -31,8 +31,7 @@ $ cd ../another-project
 $ npm link package-name
 ```
 
-# publish
-
+## publish
 ```sh
 $ deno task publish:dry ${NPM_VERSION_SUB_COMMAND} # major | minor | patch
 $ deno task publish:run ${NPM_VERSION_SUB_COMMAND}
