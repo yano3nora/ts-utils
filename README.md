@@ -2,7 +2,7 @@ ts-utils
 ===
 
 # Usage
-ref. [API References - deno.land/x](https://deno.land/x/yano3nora_tsutils)
+> [API References - deno.land/x](https://deno.land/x/yano3nora_tsutils/main.ts)
 
 ```sh
 $ npm i @yano3nora/ts-utils
