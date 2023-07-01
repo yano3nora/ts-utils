@@ -2,6 +2,7 @@ const FLAGS = ['dry', 'run'] as const
 const flag = Deno.args[0] as 'dry' | 'run'
 const isDryRun = flag !== 'run'
 const version = Deno.args[1] // npm version ${Deno.args[1]}
+const otp = Deno.args[2] // one time password
 
 if (!FLAGS.includes(flag)) {
   console.error('invalid flag')
@@ -14,7 +15,7 @@ const command = new Deno.Command(
     args: [
       '-c',
       `
-        npm version ${version} \
+        npm version ${version} --otp=${otp} \
           --git-tag-version=${isDryRun ? 'false' : 'true'} && \
         deno task build && \
         (cd npm && npm publish ${isDryRun ? '--dry-run' : ''}) \
