@@ -18,7 +18,7 @@ const command = new Deno.Command(
         npm version ${version} --otp=${otp} \
           --git-tag-version=${isDryRun ? 'false' : 'true'} && \
         deno task build && \
-        (cd npm && npm publish ${isDryRun ? '--dry-run' : ''}) --otp=${otp} \
+        (cd npm && npm publish --otp=${otp} ${isDryRun ? '--dry-run' : ''}) \
         ${isDryRun ? '&& git checkout package.json' : ''}
       `,
     ],
