@@ -33,10 +33,13 @@ $ npm link package-name
 
 ## publish
 ```sh
+$ export NPM_VERSION_SUB_COMMAND=minor # major | minor | patch
+$ export ONE_TIME_PASSWORD=xxxxxx
+
 # dry run
-$ deno task publish:dry ${NPM_VERSION_SUB_COMMAND} # major | minor | patch
+$ deno task publish:dry ${NPM_VERSION_SUB_COMMAND} ${ONE_TIME_PASSWORD}
 
 # run
-$ deno task publish:run ${NPM_VERSION_SUB_COMMAND}
+$ deno task publish:run ${NPM_VERSION_SUB_COMMAND} ${ONE_TIME_PASSWORD}
 $ git push --tags
 ```
