@@ -17,6 +17,10 @@ objectByKeys([1, 2, 3], (key) => Number(key) * 10)
 
 # Development
 ```sh
+$ code src/new-function.ts # add function
+$ code src/new-function.test.ts # add test
+$ code main.ts # add export
+
 $ deno task dev
 ```
 
