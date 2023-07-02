@@ -1,6 +1,3 @@
-ts-utils
-===
-
 # Usage
 > [API References - deno.land/x](https://deno.land/x/yano3nora_tsutils/main.ts)
 
@@ -35,7 +32,7 @@ $ cd ../another-project
 $ npm link package-name
 ```
 
-## publish
+# Publish
 ```sh
 $ export NPM_VERSION_SUB_COMMAND=minor # major | minor | patch
 $ export ONE_TIME_PASSWORD=xxxxxx
