@@ -1,6 +1,7 @@
 export * from './src/chunk.ts'
 export * from './src/error-2-json.ts'
 export * from './src/get-rank.ts'
+export * from './src/group-by.ts'
 export * from './src/is-number.ts'
 export * from './src/missing-elements.ts'
 export * from './src/nameof.ts'
