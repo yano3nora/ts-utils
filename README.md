@@ -34,6 +34,9 @@ $ npm link package-name
 
 # Publish
 ```sh
+$ git add .
+$ git commit -m 'update'
+
 $ export NPM_VERSION_SUB_COMMAND=minor # major | minor | patch
 $ export ONE_TIME_PASSWORD=xxxxxx
 

@@ -2,7 +2,7 @@ import { assertEquals } from "https://deno.land/std@0.186.0/testing/asserts.ts"
 import { shuffled } from "./shuffled.ts"
 
 Deno.test('shuffled', async (test) => {
-  await test.step('workds amount arg', () => {
+  await test.step('works amount arg', () => {
     const array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
     assertEquals(
