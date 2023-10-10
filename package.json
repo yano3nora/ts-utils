@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "0.8.0",
+  "version": "0.9.0",
   "name": "@yano3nora/ts-utils",
   "description": "typescript utils.",
   "publishConfig": {
