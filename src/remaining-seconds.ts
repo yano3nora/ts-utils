@@ -1,5 +1,5 @@
 /**
- * @example seconds2MinutesAndSeconds(2989); // '4:59'
+ * @example remainingSeconds(180); // '3:00'
  */
 export const remainingSeconds = (second: number, hour = false) => {
   const s = Math.ceil(second)
