@@ -5,17 +5,17 @@ import { char2codes } from "./char-2-codes.ts"
  * 配列の中身をシャッフルして新規配列を返す
  *
  * @param {array} array - 元の配列
- * @param {object} options
+ * @param {object|undefined} options
  * @param {number|undefined} options.pick - shuffled から pick 分だけ抽出
  * @param {string|undefined} options.seed - 同一 seed から同一結果を再現させる
  * @see https://ja.javascript.info/task/shuffle
  */
 export const shuffled = <T>(
   array: T[],
-  options: { pick?: number, seed?: string }
+  options?: { pick?: number, seed?: string }
 ) => {
   const shuffled = array.slice()
-  const { pick, seed } = options
+  const { pick, seed } = options || {}
   const prng = seed ? LCG(char2codes(seed)) : undefined
   const algo = () => (
     prng
