@@ -16,7 +16,7 @@ Deno.test('hash-by-seed', async test => {
     )
   })
 
-  await test.step('returns same hashes from same seed', () => {
+  await test.step('returns another hashes from another seed', () => {
     const generator1 = hashBySeed('seed1')
     const generator2 = hashBySeed('seed2')
 
