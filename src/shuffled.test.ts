@@ -1,4 +1,4 @@
-import { assertEquals } from "https://deno.land/std@0.186.0/testing/asserts.ts"
+import { assertEquals, assertNotEquals } from "https://deno.land/std@0.186.0/testing/asserts.ts"
 import { shuffled } from "./shuffled.ts"
 
 Deno.test('shuffled', async (test) => {
@@ -6,19 +6,19 @@ Deno.test('shuffled', async (test) => {
     const array = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
     assertEquals(
-      shuffled(array, 3).length,
+      shuffled(array, { pick: 3 }).length,
       3,
     )
     assertEquals(
-      shuffled(array, 9).length,
+      shuffled(array, { pick: 9 }).length,
       9,
     )
     assertEquals(
-      shuffled(array, 0).length,
+      shuffled(array, { pick: 0 }).length,
       array.length,
     )
     assertEquals(
-      shuffled(array, 10).length,
+      shuffled(array, { pick: 10 }).length,
       array.length,
     )
   })
@@ -38,11 +38,25 @@ Deno.test('shuffled', async (test) => {
     }
 
     for (let index = 0; index < 10000; index++) {
-      const picked = shuffled([...array], 1)[0]
+      const picked = shuffled([...array], { pick: 1 })[0]
 
       results[picked]++
     }
 
     console.log(results)
+  })
+
+  await test.step('reproducibility with seeds', () => {
+    const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    assertEquals(
+      shuffled(array, { seed: 'seed-same' }),
+      shuffled(array, { seed: 'seed-same' }),
+    )
+
+    assertNotEquals(
+      shuffled(array, { seed: 'seed-one' }),
+      shuffled(array, { seed: 'seed-two' }),
+    )
   })
 })
