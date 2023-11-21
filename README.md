@@ -46,4 +46,5 @@ $ deno task publish:dry ${NPM_VERSION_SUB_COMMAND} ${ONE_TIME_PASSWORD}
 # run
 $ deno task publish:run ${NPM_VERSION_SUB_COMMAND} ${ONE_TIME_PASSWORD}
 $ git push --tags
+$ git push
 ```
