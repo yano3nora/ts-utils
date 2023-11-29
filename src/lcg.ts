@@ -1,5 +1,8 @@
-
 export const LCG = function* (seed: number, percentage?: boolean) {
+  if (seed < 0) {
+    throw new Error('seed should be positive number')
+  }
+
   let prev = seed
 
   // https://en.wikipedia.org/wiki/Linear_congruential_generator
