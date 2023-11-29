@@ -50,6 +50,11 @@ Deno.test('shuffled', async (test) => {
     const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
     assertEquals(
+      shuffled(array, { seed: 'seed-same' }).every(v => array.includes(v)),
+      true,
+    )
+
+    assertEquals(
       shuffled(array, { seed: 'seed-same' }),
       shuffled(array, { seed: 'seed-same' }),
     )

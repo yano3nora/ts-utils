@@ -1,5 +1,5 @@
 
-export const LCG = function* (seed: number) {
+export const LCG = function* (seed: number, percentage?: boolean) {
   let prev = seed
 
   // https://en.wikipedia.org/wiki/Linear_congruential_generator
@@ -9,6 +9,8 @@ export const LCG = function* (seed: number) {
 
   while (true) {
     prev = (a * prev + c) % m
-    yield prev
+    yield percentage
+      ? prev / m
+      : prev
   }
 }

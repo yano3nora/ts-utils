@@ -16,7 +16,7 @@ export const shuffled = <T>(
 ) => {
   const shuffled = array.slice()
   const { pick, seed } = options || {}
-  const prng = seed ? LCG(char2codes(seed)) : undefined
+  const prng = seed ? LCG(char2codes(seed), true) : undefined
   const algo = () => (
     prng
       ? prng.next().value
