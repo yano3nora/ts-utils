@@ -11,7 +11,7 @@ Deno.test('wait-until-or-fail', async (test) => {
       conditionMet = true
     }, 500)
 
-    await waitUntilOrFail(() => conditionMet, 1000)
+    await waitUntilOrFail(() => conditionMet, { timeoutMillis: 1000 })
     assertEquals(conditionMet, true)
   })
 
@@ -19,7 +19,7 @@ Deno.test('wait-until-or-fail', async (test) => {
     const conditionMet = false
 
     await assertRejects(async () =>
-      await waitUntilOrFail(() => conditionMet, 500)
+      await waitUntilOrFail(() => conditionMet, { timeoutMillis: 500 })
     )
   })
 })

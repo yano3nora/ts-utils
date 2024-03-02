@@ -12,12 +12,15 @@
  */
 export const waitUntilOrFail = (
   condition: () => boolean,
-  timeoutMs = 5000,
+  options?: {
+    timeoutMillis?: number
+    intervalMillis?: number
+  },
 ) => {
   return new Promise<void>((resolve, reject) => {
     const current = () => new Date().getTime()
     const started = current()
-    const timeout = started + timeoutMs
+    const timeout = started + (options?.timeoutMillis || 5000)
 
     const timer = setInterval(() => {
       if (condition()) {
@@ -27,6 +30,6 @@ export const waitUntilOrFail = (
         clearInterval(timer)
         reject(Error(`TIMEOUT (from ${started} / current ${current()})`))
       }
-    }, 100)
+    }, options?.intervalMillis || 100)
   })
 }
