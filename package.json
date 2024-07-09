@@ -2,7 +2,7 @@
   "private": true,
   "version": "0.21.0",
   "name": "@yano3nora/ts-utils",
-  "description": "typescript utils.",
+  "description": "TypeScript Utilities as a npm dual package by Deno.",
   "publishConfig": {
     "access": "public"
   },
