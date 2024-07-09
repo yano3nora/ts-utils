@@ -1,5 +1,5 @@
 # Usage
-> [API References - deno.land/x](https://deno.land/x/yano3nora_tsutils/main.ts)
+> [API References - deno.land/x](https://deno.land/x/yano3nora_tsutils)
 
 ```sh
 $ npm i @yano3nora/ts-utils
