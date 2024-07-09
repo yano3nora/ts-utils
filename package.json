@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "0.21.0",
+  "version": "0.22.0",
   "name": "@yano3nora/ts-utils",
   "description": "TypeScript Utilities as a npm dual package by Deno.",
   "publishConfig": {
