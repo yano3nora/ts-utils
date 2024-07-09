@@ -1,3 +1,4 @@
+export * from './src/char-2-codes.ts'
 export * from './src/chunk.ts'
 export * from './src/error-2-json.ts'
 export * from './src/get-rank.ts'
