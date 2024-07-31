@@ -27,6 +27,6 @@
  * ### BigInt 未対応
  * isNumber(2n ** 53n) // false
  */
-export const isNumber = (value: any) => {
+export const isNumber = (value: any): value is number => {
   return ((typeof value === 'number') && (isFinite(value)))
 }
