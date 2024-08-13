@@ -1,4 +1,5 @@
 export * from './libs/char-2-codes.ts'
+export * from './libs/char-count.ts'
 export * from './libs/chunk.ts'
 export * from './libs/error-2-json.ts'
 export * from './libs/get-rank.ts'
