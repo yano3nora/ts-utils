@@ -1,3 +1,4 @@
+export * from './libs/array-count.ts'
 export * from './libs/char-2-codes.ts'
 export * from './libs/char-count.ts'
 export * from './libs/chunk.ts'
