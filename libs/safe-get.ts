@@ -11,10 +11,10 @@
  * console.log(value2) // '男性' | '女性' | 'default'
  */
 export function safeGet<
-  T extends Record<PropertyKey, unknown>,
+  T extends Record<PropertyKey, unknown> | unknown,
   D = undefined,
 >(
-  obj: T | null | undefined,
+  obj: T,
   key: PropertyKey | undefined | null,
   defaultValue?: D,
 ): D extends undefined ? (T[keyof T] | undefined)
@@ -22,6 +22,7 @@ export function safeGet<
   if (!obj || typeof obj !== 'object') {
     return defaultValue as any
   }
+
   if (key == null) {
     return defaultValue as any
   }

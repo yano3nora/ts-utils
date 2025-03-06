@@ -39,4 +39,10 @@ Deno.test('safe-get', () => {
     safeGet(null, 'some-key'),
     undefined,
   )
+
+  // safe to use to unknown
+  assertEquals(
+    safeGet({} as unknown, 'some-key'),
+    undefined,
+  )
 })
