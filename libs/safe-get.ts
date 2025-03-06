@@ -1,24 +1,34 @@
-// deno-lint-ignore-file no-explicit-any
+// deno-lint-ignore-file
 
 /**
  * @example
- * const GENDER = { 1: '男性', 2: '女性' }
+ * const GENDER = { 1: '男性', 2: '女性' } as const
  * const input = process.env.GENDER; // string | undefined
- * const value = safeGet(GENDER, input, 'default')
- * console.log(value) // '男性' or '女性' or 'default'
+ * const value1 = safeGet(GENDER, input)
+ * const value2 = safeGet(GENDER, input, 'default')
+ *
+ * console.log(value1) // '男性' | '女性' | undefined
+ * console.log(value2) // '男性' | '女性' | 'default'
  */
-export const safeGet = <
-  T extends Record<PropertyKey, any>,
-  K extends any,
-  D,
+export function safeGet<
+  T extends Record<PropertyKey, unknown>,
+  D = undefined,
 >(
-  obj: T,
-  key: K,
+  obj: T | null | undefined,
+  key: PropertyKey | undefined | null,
   defaultValue?: D,
-) => {
-  if ((key as any) in obj) {
-    return obj[key as keyof T]
+): D extends undefined ? (T[keyof T] | undefined)
+  : (T[keyof T] | D) {
+  if (!obj || typeof obj !== 'object') {
+    return defaultValue as any
+  }
+  if (key == null) {
+    return defaultValue as any
   }
 
-  return defaultValue
+  if (key in obj) {
+    return (obj as any)[key]
+  }
+
+  return defaultValue as any
 }
