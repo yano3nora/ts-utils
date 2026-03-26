@@ -37,13 +37,14 @@ $ npm link package-name
 $ git add .
 $ git commit -m 'update'
 
+# npm のログインセッションを使って publish する
+$ npm login
 $ export NPM_VERSION_SUB_COMMAND=minor # major | minor | patch
-$ export ONE_TIME_PASSWORD=xxxxxx
 
 # dry run
-$ deno task publish:dry ${NPM_VERSION_SUB_COMMAND} ${ONE_TIME_PASSWORD}
+$ deno task publish:dry ${NPM_VERSION_SUB_COMMAND}
 
 # run
-$ deno task publish:run ${NPM_VERSION_SUB_COMMAND} ${ONE_TIME_PASSWORD}
+$ deno task publish:run ${NPM_VERSION_SUB_COMMAND}
 $ git push --tags && git push
 ```
