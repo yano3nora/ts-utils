@@ -32,19 +32,23 @@ cd ../another-project
 npm link package-name
 ```
 
-# Publish
+# Release
+`scripts/release.ts` wraps the flow: version bump, test/build (dnt runs type check
+and Node tests for both CJS/ESM), an npm publish dry-run, and a human-only publish gate.
+Publishing uses your `npm login` session; the commit and tag are pushed atomically first.
+
 ```sh
-git add .
-git commit -m 'update'
+# 1. Bump version in package.json (via npm version, no git side effects),
+#    run tests and dnt build, then `npm publish --dry-run`.
+#    Nothing is pushed or published.
+mise run release:prepare -- 0.1.0
 
-# npm のログインセッションを使って publish する
-npm login
-export NPM_VERSION_SUB_COMMAND=minor # major | minor | patch
+# 2. Review the diff, then commit and tag it yourself.
+git add -A && git commit -m 'release: v0.1.0'
+git tag v0.1.0
 
-# dry run
-deno task publish:dry ${NPM_VERSION_SUB_COMMAND}
-
-# run
-deno task publish:run ${NPM_VERSION_SUB_COMMAND}
-git push --tags && git push
+# 3. Rebuild from the tagged commit, push the commit + tag (atomically),
+#    `npm publish`, and create a GitHub Release with generated notes.
+#    The explicit flag is a guard so this step is always a deliberate human action.
+mise run release:publish -- 0.1.0 --i-understand-this-pushes-and-publishes
 ```
