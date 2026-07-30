@@ -1,7 +1,7 @@
 import { assertEquals } from '@std/assert'
 import { isJson } from './is-json.ts'
 
-Deno.test('is-json', async test => {
+Deno.test('is-json', async (test) => {
   await test.step('valid json', () => {
     const validJson = JSON.stringify({ hello: 'world' })
 

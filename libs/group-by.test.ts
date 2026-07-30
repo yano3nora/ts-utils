@@ -1,7 +1,7 @@
 import { assertEquals } from '@std/assert'
 import { groupBy, groupsBy } from './group-by.ts'
 
-Deno.test('group-by', async test => {
+Deno.test('group-by', async (test) => {
   const users = [
     { id: 1, name: 'john', role: 'admin' },
     { id: 2, name: 'jane', role: 'admin' },
@@ -10,7 +10,7 @@ Deno.test('group-by', async test => {
 
   await test.step('groups-by', () => {
     assertEquals(
-      groupsBy(users, user => user.role),
+      groupsBy(users, (user) => user.role),
       [
         [
           'admin',
@@ -31,7 +31,7 @@ Deno.test('group-by', async test => {
 
   await test.step('group-by', () => {
     assertEquals(
-      groupBy(users, user => user.role),
+      groupBy(users, (user) => user.role),
       {
         admin: [
           { id: 1, name: 'john', role: 'admin' },
@@ -40,7 +40,7 @@ Deno.test('group-by', async test => {
         user: [
           { id: 3, name: 'jack', role: 'user' },
         ],
-      }
+      },
     )
   })
 })

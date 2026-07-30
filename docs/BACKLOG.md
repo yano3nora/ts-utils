@@ -17,12 +17,8 @@
 
 ## 未着手
 
-- **GitHub issue #2 (v1.0.0) 対応**:
-  https://github.com/yano3nora/ts-utils/issues/2
-  - npm publish の 2FA 運用整理 / gist に散在する utils の取り込み /
-    formatter・型推論まわりの修正。詳細は issue 本文が正
-- **jsr への公開 + JSDoc 改良**: 廃止された deno.land/x (旧 denoland registry)
-  の代替として [jsr](https://jsr.io/) へ公開する
-  - JSDoc を改良し、jsr の自動生成ドキュメントだけで開発メンバーが API 一覧 +
-    example を読み取れる状態にする
-  - README の API References リンク (deno.land/x) を jsr へ差し替える
+- **GitHub issue #2 (v1.0.0) 対応**: →
+  [TASK-260731-issue-2-v1-0-0.md](TASK-260731-issue-2-v1-0-0.md) へ切り出し済み
+- **jsr への公開 + JSDoc 改良**: →
+  [TASK-260731-jsr-jsdoc.md](TASK-260731-jsr-jsdoc.md) へ切り出し済み
+  (`deno publish` 自体は人間が実行する)

@@ -1,7 +1,7 @@
 import { assertEquals } from '@std/assert'
 import { hashBySeed } from './hash-by-seed.ts'
 
-Deno.test('hash-by-seed', async test => {
+Deno.test('hash-by-seed', async (test) => {
   await test.step('returns same hashes from same seed', () => {
     const seed = 'test'
     const generator1 = hashBySeed(seed)
@@ -24,7 +24,7 @@ Deno.test('hash-by-seed', async test => {
     const hashes2 = [0, 1, 2].map(() => generator2.next().value)
 
     assertEquals(
-      hashes1.every(hash => !hashes2.includes(hash)),
+      hashes1.every((hash) => !hashes2.includes(hash)),
       true,
     )
   })

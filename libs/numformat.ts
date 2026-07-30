@@ -6,6 +6,14 @@ const DEFAULTS = {
   maximumFractionDigits: 1,
 } satisfies Parameters<typeof numformat>[1]
 
+/**
+ * numformat - Intl.NumberFormat による数値フォーマッタ
+ *
+ * NOTE default の maximumFractionDigits (1) は「style 未指定 (decimal) かつ
+ *      fraction digits 未指定」のときだけ適用する。currency / percent は
+ *      Intl 本来の既定桁数を尊重し、minimumFractionDigits 単独指定と
+ *      矛盾して RangeError になるのも防ぐため
+ */
 export const numformat = (
   number: unknown,
   options?: Intl.NumberFormatOptions & {
@@ -13,9 +21,21 @@ export const numformat = (
     nan?: string
   },
 ): string => {
-  const opts = { ...DEFAULTS, ...options }
-  const { locales, nan } = opts
-  const formatter = new Intl.NumberFormat(locales, options)
+  const {
+    locales = DEFAULTS.locales,
+    nan = DEFAULTS.nan,
+    ...intlOptions
+  } = options ?? {}
+
+  if (
+    intlOptions.maximumFractionDigits === undefined &&
+    intlOptions.minimumFractionDigits === undefined &&
+    (intlOptions.style === undefined || intlOptions.style === 'decimal')
+  ) {
+    intlOptions.maximumFractionDigits = DEFAULTS.maximumFractionDigits
+  }
+
+  const formatter = new Intl.NumberFormat(locales, intlOptions)
 
   if (!isNumber(number)) {
     return nan

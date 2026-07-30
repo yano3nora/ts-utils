@@ -1,7 +1,7 @@
 import { assertEquals } from '@std/assert'
 import { number2alphabets } from './number-2-alphabets.ts'
 
-Deno.test('number-2-alphabets', async test => {
+Deno.test('number-2-alphabets', async (test) => {
   await test.step('first letters as a, b, c', () => {
     assertEquals(number2alphabets(0), 'A')
     assertEquals(number2alphabets(1), 'B')

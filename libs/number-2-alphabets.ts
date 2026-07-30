@@ -1,17 +1,16 @@
 /**
+ * 0 始まりの数値を A, B, ..., Z, AA, AB, ... のアルファベット列へ変換する
+ *
+ * スプレッドシートの列名のような連番ラベルの生成用。
+ *
  * @link https://stackoverflow.com/a/64456745/11565411
  * @example
- *   number2alphabets(0) // A
- *   number2alphabets(1) // B
- *   number2alphabets(25) // Z
- *   number2alphabets(26) // AA
- *   number2alphabets(27) // AB
- *   number2alphabets(51) // AZ
- *   number2alphabets(52) // BA
- *   number2alphabets(701) // ZZ
- *   number2alphabets(702) // AAA
+ * number2alphabets(0) // 'A'
+ * number2alphabets(25) // 'Z'
+ * number2alphabets(26) // 'AA'
+ * number2alphabets(702) // 'AAA'
  */
-export const number2alphabets = (num: number) => {
+export const number2alphabets = (num: number): string => {
   let alphabets = ''
 
   while (num >= 0) {

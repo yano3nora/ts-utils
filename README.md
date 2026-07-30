@@ -1,5 +1,5 @@
 # Usage
-> [API References - deno.land/x](https://deno.land/x/yano3nora_tsutils)
+> [API References - jsr](https://jsr.io/@yano3nora/ts-utils/doc)
 
 ```sh
 npm i @yano3nora/ts-utils
@@ -33,9 +33,11 @@ npm link package-name
 ```
 
 # Release
-`scripts/release.ts` wraps the flow: version bump, test/build (dnt runs type check
-and Node tests for both CJS/ESM), an npm publish dry-run, and a human-only publish gate.
+`scripts/release.ts` wraps the flow: version bump (`package.json` and `deno.jsonc`
+are kept in sync), test/build (dnt runs type check and Node tests for both CJS/ESM),
+npm/jsr publish dry-runs, and a human-only publish gate.
 Publishing uses your `npm login` session; the commit and tag are pushed atomically first.
+Publishing to [jsr](https://jsr.io/@yano3nora/ts-utils) is a separate manual `deno publish`.
 
 ```sh
 # 1. Bump version in package.json (via npm version, no git side effects),

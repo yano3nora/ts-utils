@@ -124,6 +124,34 @@ async function bumpVersion(version: string): Promise<void> {
     '--git-tag-version=false',
     '--allow-same-version',
   ])
+  await bumpDenoJsonVersion(version)
+}
+
+// deno.jsonc (jsr 公開物) の version も package.json と同期して bump する。
+// comment 付き JSONC のため JSON.parse では書き換えられず、version 行だけ置換する
+async function bumpDenoJsonVersion(version: string): Promise<void> {
+  const path = 'deno.jsonc'
+  const text = await Deno.readTextFile(path)
+  const replaced = text.replace(/("version":\s*")[^"]+(")/, `$1${version}$2`)
+
+  if (!replaced.includes(`"version": "${version}"`)) {
+    throw new Error(`Failed to bump the version field in ${path}.`)
+  }
+
+  await Deno.writeTextFile(path, replaced)
+  console.log(`Bumped ${path} version to ${version}.`)
+}
+
+// jsr 公開物 (deno.jsonc) と npm 公開物 (package.json) の version
+// 不一致を publish 前に止める
+async function assertDenoJsonVersion(version: string): Promise<void> {
+  const text = await Deno.readTextFile('deno.jsonc')
+
+  if (!text.includes(`"version": "${version}"`)) {
+    throw new Error(
+      `deno.jsonc version does not match ${version}. Run release:prepare and commit the bump first.`,
+    )
+  }
 }
 
 // npm publish 後に gh release だけ失敗しても再実行できるよう、公開済みかを registry で確かめる
@@ -205,6 +233,12 @@ async function prepare(version: string): Promise<void> {
   // publish で失敗しうる pack 〜 publint をここで先に失敗させておく (認証不要)
   await run('npm', ['publish', '--dry-run'], { cwd: 'npm', stream: true })
 
+  // jsr 側の検証 (no-slow-types 等) も先に失敗させておく (認証不要)。
+  // bump 直後の未コミット状態で走らせるため --allow-dirty が必要
+  await run('deno', ['publish', '--dry-run', '--allow-dirty'], {
+    stream: true,
+  })
+
   console.log(
     '\nDry-run passed (validation only; publish rebuilds from the tag).',
   )
@@ -230,6 +264,7 @@ async function publish(
       `package.json version does not match ${version}. Run release:prepare and commit the bump first.`,
     )
   }
+  await assertDenoJsonVersion(version)
   await assertCleanTree()
   await assertTagAtHead(tag)
   await ensureNpmLogin()
@@ -266,6 +301,9 @@ async function publish(
   }
 
   console.log(`Published ${tag}.`)
+  console.log(
+    'For jsr, run `deno publish` yourself (browser auth on first publish).',
+  )
 }
 
 if (import.meta.main) {

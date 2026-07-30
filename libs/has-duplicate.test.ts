@@ -1,7 +1,7 @@
 import { assertEquals } from '@std/assert'
 import { hasDuplicate } from './has-duplicate.ts'
 
-Deno.test('has-duplicate', async test => {
+Deno.test('has-duplicate', async (test) => {
   await test.step('returns false for an empty array', () => {
     assertEquals(hasDuplicate([]), false)
   })
@@ -42,7 +42,7 @@ Deno.test('has-duplicate', async test => {
       { id: 1, name: 'jane' },
     ]
 
-    assertEquals(hasDuplicate(users, user => user.id), true)
+    assertEquals(hasDuplicate(users, (user) => user.id), true)
   })
 
   await test.step('returns false when derived keys are unique', () => {
@@ -51,7 +51,7 @@ Deno.test('has-duplicate', async test => {
       { id: 2, name: 'jane' },
     ]
 
-    assertEquals(hasDuplicate(users, user => user.id), false)
+    assertEquals(hasDuplicate(users, (user) => user.id), false)
   })
 
   await test.step('returns true when different objects resolve to the same derived key', () => {
@@ -60,6 +60,6 @@ Deno.test('has-duplicate', async test => {
       { id: 2, name: 'john' },
     ]
 
-    assertEquals(hasDuplicate(users, user => user.name), true)
+    assertEquals(hasDuplicate(users, (user) => user.name), true)
   })
 })

@@ -4,7 +4,7 @@ import { randomInt } from './random-int.ts'
 /**
  * TODO ランダムで不安定なテスト
  */
-Deno.test('randomInt', async test => {
+Deno.test('randomInt', async (test) => {
   await test.step('returns a number between 0 and 10', () => {
     for (let index = 0; index < 100; index++) {
       const result = randomInt(0, 10)
@@ -34,7 +34,6 @@ Deno.test('randomInt', async test => {
 
     console.log(results)
   })
-
 
   await test.step('check bias with seed', () => {
     const seed = 'this will seed return ...' // 9

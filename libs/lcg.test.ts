@@ -2,7 +2,7 @@ import { assertEquals, assertRejects } from '@std/assert'
 import { isNumber } from './is-number.ts'
 import { LCG } from './lcg.ts'
 
-Deno.test('lcg', async test => {
+Deno.test('lcg', async (test) => {
   await test.step('passing no percentage', () => {
     const gen = LCG(0)
     const results = []
@@ -12,7 +12,7 @@ Deno.test('lcg', async test => {
     }
 
     assertEquals(
-      results.every(n => isNumber(n) && n > 0),
+      results.every((n) => isNumber(n) && n > 0),
       true,
     )
   })
@@ -26,7 +26,7 @@ Deno.test('lcg', async test => {
     }
 
     assertEquals(
-      results.every(n => isNumber(n) && n > 0 && n < 1),
+      results.every((n) => isNumber(n) && n > 0 && n < 1),
       true,
     )
   })

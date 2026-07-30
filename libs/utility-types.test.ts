@@ -1,6 +1,10 @@
 import { assertEquals } from '@std/assert'
-import { DeepPartial, DeepPartialPick, NonEmptyArray } from './utility-types.ts'
-import { DeepNonNullable } from '../main.ts'
+import type {
+  DeepPartial,
+  DeepPartialPick,
+  NonEmptyArray,
+} from './utility-types.ts'
+import type { DeepNonNullable } from '../main.ts'
 
 Deno.test('utility-types', async (test) => {
   type User = {
@@ -22,7 +26,16 @@ Deno.test('utility-types', async (test) => {
 
   await test.step('DeepPartial', () => {
     const u: DeepPartial<User> = {}
+
+    // 3 階層目以降も再帰的に optional になる
+    const nested: DeepPartial<{ a: { b: { c: number } } }> = { a: { b: {} } }
+
+    // 配列プロパティは要素も DeepPartial になる
+    const list: DeepPartial<{ items: { id: number }[] }> = { items: [{}] }
+
     assertEquals(u, {})
+    assertEquals(nested, { a: { b: {} } })
+    assertEquals(list, { items: [{}] })
   })
 
   await test.step('DeepPartialPick', () => {

@@ -1,7 +1,7 @@
 import { assertEquals } from '@std/assert'
 import { isUrl } from './is-url.ts'
 
-Deno.test('is-url', async test => {
+Deno.test('is-url', async (test) => {
   await test.step('valid url', () => {
     const validUrl = 'https://example.com?hoge=fuga&piyo=buz'
 

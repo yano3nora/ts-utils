@@ -1,4 +1,25 @@
 {
+  // jsr 公開用メタデータ。version は package.json と一致させること
+  // (release フローへの組み込みは docs/TASK-260731-jsr-jsdoc.md の Open 参照)
+  "name": "@yano3nora/ts-utils",
+  "version": "0.38.1",
+  "exports": "./main.ts",
+  // jsr の tarball には利用に必要なもの (main.ts, libs/, README, LICENSE) だけ含める
+  "publish": {
+    "exclude": [
+      ".claude/",
+      ".vscode/",
+      "AGENTS.md",
+      "CLAUDE.md",
+      "build.ts",
+      "docs/",
+      "libs/**/*.test.ts",
+      "mise.toml",
+      "package-lock.json",
+      "package.json",
+      "scripts/"
+    ]
+  },
   "tasks": {
     "dev": "deno test --watch",
     "test": "deno test",

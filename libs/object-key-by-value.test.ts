@@ -1,7 +1,7 @@
 import { assertEquals } from '@std/assert'
 import { objectKeyByValue } from './object-key-by-value.ts'
 
-Deno.test('object-key-by-value', async test => {
+Deno.test('object-key-by-value', async (test) => {
   await test.step('case of undefined', () => {
     const obj = { one: 1 }
 

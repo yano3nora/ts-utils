@@ -1,7 +1,7 @@
 import { assertEquals } from '@std/assert'
 import { isNumber } from './is-number.ts'
 
-Deno.test('is-number', async test => {
+Deno.test('is-number', async (test) => {
   await test.step('string literal be fail', () => {
     assertEquals(isNumber('1'), false)
   })

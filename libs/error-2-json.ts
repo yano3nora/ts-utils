@@ -1,12 +1,18 @@
 // deno-lint-ignore-file no-explicit-any
 
 /**
- * error to json string
+ * Error を JSON 文字列へ変換する
  *
- * @ref https://github.com/getsentry/sentry-javascript/pull/1060/files
- * @ref https://sosukesuzuki.dev/posts/stage-3-object-hasown/
+ * JSON.stringify(error) は name / message / stack を落としてしまうため、
+ * logging やエラー送信用にそれらと自前 (own) のカスタムプロパティを拾って
+ * 文字列化する。
+ *
+ * @link https://github.com/getsentry/sentry-javascript/pull/1060/files
+ * @link https://sosukesuzuki.dev/posts/stage-3-object-hasown/
+ * @example
+ * error2json(new Error('oops')) // '{"name":"Error","message":"oops","stack":"..."}'
  */
-export const error2json = (error: any) => {
+export const error2json = (error: any): string => {
   const e: any = {
     name: error?.name,
     message: error?.message,

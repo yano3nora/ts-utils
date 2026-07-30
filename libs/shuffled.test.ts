@@ -1,5 +1,5 @@
-import { assertEquals, assertNotEquals } from "@std/assert"
-import { shuffled } from "./shuffled.ts"
+import { assertEquals, assertNotEquals } from '@std/assert'
+import { shuffled } from './shuffled.ts'
 
 Deno.test('shuffled', async (test) => {
   await test.step('works amount arg', () => {
@@ -50,7 +50,9 @@ Deno.test('shuffled', async (test) => {
     const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
     assertEquals(
-      shuffled(array, { seed: 'clpjjoqrc00be3b6w985mhioy' }).every(v => array.includes(v)),
+      shuffled(array, { seed: 'clpjjoqrc00be3b6w985mhioy' }).every((v) =>
+        array.includes(v)
+      ),
       true,
     )
 

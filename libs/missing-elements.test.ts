@@ -1,7 +1,7 @@
 import { assertEquals } from '@std/assert'
 import { missingElements } from './missing-elements.ts'
 
-Deno.test('missing-elements', async test => {
+Deno.test('missing-elements', async (test) => {
   await test.step('strings', () => {
     const originalNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     const partialNumbers = [1, 3, 4, 5]

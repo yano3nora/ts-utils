@@ -1,7 +1,7 @@
 import { assertEquals } from '@std/assert'
 import { range } from './range.ts'
 
-Deno.test('range', async test => {
+Deno.test('range', async (test) => {
   await test.step('simple array', () => {
     assertEquals(
       range(0),
