@@ -1,4 +1,5 @@
 /**
+ * @deprecated es-toolkit の `invert` へ移行 (drop-in 置換可)。docs/ADR-0001 参照
  * @link https://ultimatecourses.com/blog/reverse-object-keys-and-values-in-javascript
  * @example
  *   const swapped = objectSwap({ x: 1, y: 2 }) // { 1: 'x', 2: 'y' }

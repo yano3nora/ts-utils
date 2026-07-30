@@ -1,4 +1,6 @@
 /**
+ * @deprecated es-toolkit の `keyBy` へ移行 (docs/ADR-0001 参照)。
+ *   NOTE objects2object(items, 'id') → keyBy(items, item => item.id)
  * @example
  *   objects2object(
  *     [ { id: 1, name: 'john' }, { id: 2, name: 'jane' } ],

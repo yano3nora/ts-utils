@@ -1,4 +1,5 @@
 /**
+ * @deprecated es-toolkit の `difference` へ移行 (drop-in 置換可)。docs/ADR-0001 参照
  * @example
  * const originalNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
  * const partialNumbers = [1, 3, 4, 5]

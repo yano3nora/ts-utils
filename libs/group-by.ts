@@ -24,6 +24,10 @@ export const groupsBy = <K, V>(
   )
 
 /**
+ * NOTE es-toolkit の `groupBy` への移行を検討 (docs/ADR-0001 参照)。
+ *      ただし es-toolkit は Partial でない Record<K, V[]> を返し、
+ *      存在しないキーへのアクセスが型エラーにならなくなる (undefined
+ *      チェックが外れて型が緩む) ため安易に置換しないこと
  * @example
  * groupBy(users, user => user.role).admin // admin role users
  */

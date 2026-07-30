@@ -1,4 +1,5 @@
 /**
+ * @deprecated es-toolkit の `chunk` へ移行 (drop-in 置換可)。docs/ADR-0001 参照
  * @example chunk([1, 2, 3, 4, 5, 6, 7], 3) // [[1, 2, 3], [4, 5, 6], [7]]
  * @link https://qiita.com/yarnaimo/items/e92600237d65876f8dd8
  */

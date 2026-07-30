@@ -1,6 +1,9 @@
 import { isNumber } from './is-number.ts'
 
 /**
+ * NOTE es-toolkit の `range` への移行を検討 (docs/ADR-0001 参照)。
+ *      ただし end 排他の挙動差があるため安易に置換しないこと:
+ *      range({ min: 1, max: 5 }) → range(1, 6)
  * @example
  * range(5) // [ 0, 1, 2, 3, 4 ]
  * range({ min: 1, max: 5 }) // [1, 2, 3, 4, 5]

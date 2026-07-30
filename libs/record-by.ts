@@ -1,4 +1,6 @@
 /**
+ * @deprecated es-toolkit の `keyBy` へ移行 (docs/ADR-0001 参照)。
+ *   NOTE 引数順が逆: recordBy(getKey, items) → keyBy(items, getKey)
  * @example
  * type Keys = 1 | 2
  * const obj = recordBy<Keys, { id: Keys, name: string }>(
