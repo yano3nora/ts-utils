@@ -43,14 +43,14 @@ Publishing to [jsr](https://jsr.io/@yano3nora/ts-utils) is a separate manual `de
 # 1. Bump version in package.json (via npm version, no git side effects),
 #    run tests and dnt build, then `npm publish --dry-run`.
 #    Nothing is pushed or published.
-mise run release:prepare -- 0.1.0
+mise run release:prepare -- 1.0.0
 
 # 2. Review the diff, then commit and tag it yourself.
-git add -A && git commit -m 'release: v0.1.0'
-git tag v0.1.0
+git add -A && git commit -m 'release: v1.0.0'
+git tag v1.0.0
 
 # 3. Rebuild from the tagged commit, push the commit + tag (atomically),
 #    `npm publish`, and create a GitHub Release with generated notes.
 #    The explicit flag is a guard so this step is always a deliberate human action.
-mise run release:publish -- 0.1.0 --i-understand-this-pushes-and-publishes
+mise run release:publish -- 1.0.0 --i-understand-this-pushes-and-publishes
 ```
