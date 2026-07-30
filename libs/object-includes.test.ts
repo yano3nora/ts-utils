@@ -1,5 +1,5 @@
 // deno-lint-ignore-file no-explicit-any
-import { assertEquals } from 'https://deno.land/std@0.186.0/testing/asserts.ts'
+import { assertEquals } from '@std/assert'
 import { objectIncludes } from './object-includes.ts'
 
 Deno.test('object-includes', () => {

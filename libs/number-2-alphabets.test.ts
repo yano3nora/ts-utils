@@ -1,4 +1,4 @@
-import { assertEquals } from 'https://deno.land/std@0.186.0/testing/asserts.ts'
+import { assertEquals } from '@std/assert'
 import { number2alphabets } from './number-2-alphabets.ts'
 
 Deno.test('number-2-alphabets', async test => {

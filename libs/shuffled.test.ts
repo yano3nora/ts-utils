@@ -1,4 +1,4 @@
-import { assertEquals, assertNotEquals } from "https://deno.land/std@0.186.0/testing/asserts.ts"
+import { assertEquals, assertNotEquals } from "@std/assert"
 import { shuffled } from "./shuffled.ts"
 
 Deno.test('shuffled', async (test) => {

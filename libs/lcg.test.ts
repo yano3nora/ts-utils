@@ -1,4 +1,4 @@
-import { assertEquals, assertRejects } from 'https://deno.land/std@0.186.0/testing/asserts.ts'
+import { assertEquals, assertRejects } from '@std/assert'
 import { isNumber } from './is-number.ts'
 import { LCG } from './lcg.ts'
 

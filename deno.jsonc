@@ -14,9 +14,11 @@
   },
   "fmt": {
     "exclude": ["npm/", "README.md"],
-    "options": {
-      "singleQuote": true,
-      "semiColons": false
-    }
+    "singleQuote": true,
+    "semiColons": false
+  },
+  "imports": {
+    "@deno/dnt": "jsr:@deno/dnt@^0.42.3",
+    "@std/assert": "jsr:@std/assert@^1"
   }
 }

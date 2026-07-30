@@ -1,7 +1,7 @@
 import {
   assertEquals,
   assertRejects,
-} from 'https://deno.land/std@0.186.0/testing/asserts.ts'
+} from '@std/assert'
 import { waitUntilOrFail } from './wait-until-or-fail.ts'
 
 Deno.test('wait-until-or-fail', async (test) => {

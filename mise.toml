@@ -1,0 +1,7 @@
+# https://mise.jdx.dev/
+# npm 公開物のビルド (dnt) 結果が runtime version に依存するため、
+# global の deno に追従させず project local で明示 pin する。
+# bump するときは `deno task build` と publish:dry の通過を確認すること。
+
+[tools]
+deno = "2.9.1"

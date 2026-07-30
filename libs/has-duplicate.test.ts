@@ -1,4 +1,4 @@
-import { assertEquals } from 'https://deno.land/std@0.186.0/testing/asserts.ts'
+import { assertEquals } from '@std/assert'
 import { hasDuplicate } from './has-duplicate.ts'
 
 Deno.test('has-duplicate', async test => {
