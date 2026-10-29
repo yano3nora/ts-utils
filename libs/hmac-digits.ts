@@ -1,8 +1,11 @@
+import { hmacBytes } from './hmac-bytes.ts'
+
 /**
  * HMAC(key, message) を RFC 4226 の dynamic truncation で digits 桁の数字文字列にする
  *
- * 秘密鍵を知る人だけが計算できる OTP・イベントコード・ページパスワードなどの生成用。
- * HMAC の計算は Web Crypto (`globalThis.crypto.subtle`) に任せる。
+ * 秘密鍵を知る人だけが計算できる OTP・イベントコードなどの生成用。
+ * 目視や口頭で伝える短い値に向く。恒常的なパスワードには {@linkcode hmacChars} を使う。
+ * HMAC の計算は {@linkcode hmacBytes} (Web Crypto) に任せる。
  * 先頭が 0 の値も、桁数どおりに 0 で埋める。
  *
  * NOTE 同じ key と message からは、常に同じ値を返す。OTP では、時刻などで message を変える
@@ -33,22 +36,7 @@ export const hmacDigits = async (
     throw new RangeError(`digits must be an integer 1-9: ${digits}`)
   }
 
-  const keyBytes = toBytes(key)
-
-  if (keyBytes.length === 0) {
-    throw new RangeError('key must not be empty')
-  }
-
-  const cryptoKey = await crypto.subtle.importKey(
-    'raw',
-    keyBytes,
-    { name: 'HMAC', hash },
-    false,
-    ['sign'],
-  )
-  const mac = new Uint8Array(
-    await crypto.subtle.sign('HMAC', cryptoKey, toBytes(message)),
-  )
+  const mac = await hmacBytes(key, message, hash)
 
   const offset = mac[mac.length - 1] & 0x0f
   const binary = ((mac[offset] & 0x7f) << 24) |
@@ -58,9 +46,3 @@ export const hmacDigits = async (
 
   return String(binary % 10 ** digits).padStart(digits, '0')
 }
-
-// Uint8Array は複製して渡す。理由: TS 5.9 以降、ArrayBufferLike 由来の型は BufferSource に代入できない
-const toBytes = (value: string | Uint8Array): Uint8Array<ArrayBuffer> =>
-  typeof value === 'string'
-    ? new TextEncoder().encode(value)
-    : new Uint8Array(value)

@@ -3,6 +3,8 @@
  *
  * NOTE 配列プロパティにも再帰するため、要素も DeepPartial になり
  *      要素型へ undefined が加わる
+ * NOTE any は any のまま残す。理由: any を mapped type にすると index signature
+ *      になり、primitive を代入できなくなる (`0 extends 1 & T` は any の判定)
  *
  * @example
  * type User = {
@@ -18,7 +20,7 @@
  * const u: DeepPartial<User> = {} // ok
  * const p: DeepPartial<User> = { profile: { contact: {} } } // 何階層でも ok
  */
-export type DeepPartial<T> = {
+export type DeepPartial<T> = 0 extends 1 & T ? T : {
   [P in keyof T]?: DeepPartial<T[P]>
 }
 

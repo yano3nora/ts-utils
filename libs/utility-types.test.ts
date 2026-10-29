@@ -1,3 +1,4 @@
+// deno-lint-ignore-file no-explicit-any
 import { assertEquals } from '@std/assert'
 import type {
   DeepPartial,
@@ -36,6 +37,17 @@ Deno.test('utility-types', async (test) => {
     assertEquals(u, {})
     assertEquals(nested, { a: { b: {} } })
     assertEquals(list, { items: [{}] })
+  })
+
+  await test.step('DeepPartial<any>', () => {
+    // any のプロパティは any のまま残る。primitive も object も代入できる
+    const n: DeepPartial<{ payload: any; type: string }> = { payload: 1 }
+    const o: DeepPartial<{ payload: any; type: string }> = { payload: { a: 1 } }
+    const a: DeepPartial<any> = 'any'
+
+    assertEquals(n, { payload: 1 })
+    assertEquals(o, { payload: { a: 1 } })
+    assertEquals(a, 'any')
   })
 
   await test.step('DeepPartialPick', () => {
