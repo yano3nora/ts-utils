@@ -2,7 +2,7 @@
   // jsr 公開用メタデータ。version は package.json と一致させること
   // (release フローへの組み込みは docs/TASK-260731-jsr-jsdoc.md の Open 参照)
   "name": "@yano3nora/ts-utils",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "exports": "./main.ts",
   // jsr の tarball には利用に必要なもの (main.ts, libs/, README, LICENSE) だけ含める
   "publish": {
